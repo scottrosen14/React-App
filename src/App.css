@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #343A40;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.addTableBtn {
+  position: relative;
+  margin-left: 45%;
+  padding: 10px;
+  font-weight: bold;
+  color: blue;
+}
+
+.table {
+  border: 10px solid #00BEBE;
+  border-radius: 5px;
+  margin: 100px;
+  float: left;
+}
+
+.topRow {
+  background-color: red;
+}
+
+#tableBarWrap {
+  width: 70%;
+  position: relative;
+  margin: auto;
+}
+#tableBar {
+  position: relative;
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  margin: auto;
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
