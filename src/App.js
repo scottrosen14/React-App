@@ -8,22 +8,26 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tables:[]
+      tables: []
+      // tables:{
+      //   add: (item) => {
+      //     tables[this.state.length] = item;
+      //     this.state.tables.length++
+      //   },
+      //   length: 0
+      // }
     };
   }
 
   addTable = () => {
-    let stateNew = Object.create({}, this.state);
-    this.setState(() => {
-      let newState = this.state;
-        newState.tables.push({
+    let stateNew = Object.assign({}, this.state);
+    stateNew.tables.push({
             name: 'Schema',
             rows: [
               { field: '', type: '' }
             ]
         })
-      return newState;
-    })
+    this.setState(stateNew);
   }
 
   deleteTable = (index) => {
