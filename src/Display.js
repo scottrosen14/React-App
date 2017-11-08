@@ -6,10 +6,10 @@ import Table from './Table';
 
 class Display extends Component {
   render () {
-    const {state, deleteTable, addRow} = this.props;
+    const {state, deleteTable} = this.props;
     const tablesArr = [];
     for (let i = 0; i < state.tables.length; i++) {
-      let table = <Table state={state} name={state.tables[i].name} tableIndex={i} deleteTable={deleteTable} addRow={(e) => this.props.addRow(e)}/>
+      let table = <Table state={state} tableIndex={i} deleteTable={deleteTable}/>
       tablesArr.push(table)
     }
     return (

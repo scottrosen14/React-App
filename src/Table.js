@@ -5,15 +5,14 @@ import Draggable, {DraggableCore} from 'react-draggable';
 
 class Table extends Component {
   render() {
-    const {state, name, tableIndex, deleteTable, addRow} = this.props;
-    const rows = [];
+    const {state, tableIndex, deleteTable} = this.props;
     return (
       <Draggable>
       <div>
         <table className="table">
         <button onClick={() => deleteTable(tableIndex)}>Delete</button>
           <tr className="topRow">
-            <th><input type="text" placeholder={this.props.name}/></th>
+            <th><input type="text" placeholder={state.tables[tableIndex].name}/></th>
           </tr>
           <tbody>
             <tr className="dataField">
@@ -21,7 +20,7 @@ class Table extends Component {
               <td><input type="text" placeholder="data type"/></td>
             </tr>
           </tbody>
-          <button className="addRowBtn" onClick={(e) => this.props.addRow(e)}>Add Row</button>
+          <button className="addRowBtn">Add Row</button>
         </table>
 
       </div>

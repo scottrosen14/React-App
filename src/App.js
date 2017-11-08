@@ -8,26 +8,34 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tables: []
-      // tables:{
-      //   add: (item) => {
-      //     tables[this.state.length] = item;
-      //     this.state.tables.length++
-      //   },
-      //   length: 0
-      // }
+      // tables: []
+      tables: {
+        length: 0
+      }
     };
   }
 
+  add = (item) => {
+      let stateNew = Object.assign({}, this.state);
+      stateNew.tables[stateNew.tables.length] = item;
+      stateNew.tables.length++
+      this.setState(stateNew);
+      console.log('state add', this.state)
+  }
+
   addTable = () => {
-    let stateNew = Object.assign({}, this.state);
-    stateNew.tables.push({
+    // changed from push
+    this.add({
             name: 'Schema',
             rows: [
               { field: '', type: '' }
             ]
         })
+    let stateNew = Object.assign({}, this.state);
+    console.log('new state', stateNew)
     this.setState(stateNew);
+    console.log('state', this.state)
+
   }
 
   deleteTable = (index) => {
@@ -41,28 +49,6 @@ class App extends Component {
     this.setState(stateNew);
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-  }
-  changeTableName = (e) => {
-    this.setState(() => {
-      let newState = this.state;
-
-      console.log('placeholder', e.target)
-        // newState.tables[0].name = e.target.placeholder;
-      return newState;
-    })
-  }
-  addRow = () => {
-    this.setState(() => {
-      let newState = this.state;
-      newState.tables.forEach((table, i) => {
-        table.rows.push({ field: '', type: '' })
-      })
-      return newState;
-    })
-  }
-
   render() {
     return (
       <div>
@@ -72,12 +58,12 @@ class App extends Component {
               id="tableBar"
               type="text"
               onChange={this.changeTableName}
-              placeholder={this.state.tables.length > 0 ? this.state.tables[0].name : 'Table'}/>
+              placeholder={'Type here'}/>
             <button className="addTableBtn" onClick={this.addTable}>Add Table</button>
             <input type="submit" value="Submit" className="addTableBtn" onClick={this.changeTableName}/>
         </form>
         </div>
-        <Display state = {this.state} deleteTable={this.deleteTable} addRow={(e) => this.addRow(e)}/>
+        <Display state = {this.state} deleteTable={this.deleteTable}/>
       </div>
     );
   }
