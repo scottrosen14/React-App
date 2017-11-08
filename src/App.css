@@ -44,6 +44,7 @@ body {
 }
 
 .table {
+  position: relative;
   border: 10px solid #00BEBE;
   border-radius: 5px;
   margin: 100px;

@@ -8,27 +8,35 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tables:[{
-        name: 'Schema',
-            rows: [
-              { field: '', type: '' }
-            ]
-      }]
+      tables:[]
     };
   }
 
   addTable = () => {
-    // this.setState(() => {
-    //   let newState = this.state;
-    //     newState.tables.push({
-    //         name: 'Schema',
-    //         rows: [
-    //           { field: '', type: '' }
-    //         ]
-    //     })
-    //   return newState;
-    // })
+    let stateNew = Object.create({}, this.state);
+    this.setState(() => {
+      let newState = this.state;
+        newState.tables.push({
+            name: 'Schema',
+            rows: [
+              { field: '', type: '' }
+            ]
+        })
+      return newState;
+    })
   }
+
+  deleteTable = (index) => {
+    // add button to table for deleting
+    // copy state
+    // get the index of the target table
+    // make the target table an empty object
+    // check to make sure state has changed
+    const stateNew = Object.assign({}, this.state);
+    stateNew.tables.splice(index, 1);
+    this.setState(stateNew);
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
   }
@@ -65,7 +73,7 @@ class App extends Component {
             <input type="submit" value="Submit" className="addTableBtn" onClick={this.changeTableName}/>
         </form>
         </div>
-        <Display state = {this.state} addRow={(e) => this.addRow(e)}/>
+        <Display state = {this.state} deleteTable={this.deleteTable} addRow={(e) => this.addRow(e)}/>
       </div>
     );
   }
