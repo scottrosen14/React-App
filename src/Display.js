@@ -6,14 +6,33 @@ import Table from './Table';
 
 class Display extends Component {
   render () {
-    const {state, deleteTable, addRow} = this.props;
+    const {state, deleteTable, deleteAllTables, addRow, changeTableName} = this.props;
     const tablesArr = [];
     for (let i = 0; i < state.tables.length; i++) {
-      let table = <Table state={state} name={state.tables[i].name} tableIndex={i} deleteTable={deleteTable} addRow={(e) => this.props.addRow(e)}/>
-      tablesArr.push(table)
+      if (state.tables[i] !== null) {
+        let table = (
+          <Table key={i} state={state} table={state.tables[i]} tableIndex={i} deleteTable={deleteTable} deleteAllTables={deleteAllTables} addRow={addRow} changeTableName={changeTableName} />
+        );
+        tablesArr.push(table)
+      } else {
+        let pixel = (
+          <table className="tableInvisible">
+            <thead>
+              <tr><th><input className="inputInv" type="text"/></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input className="inputInv" type="text"/></td>
+                <td><input className="inputInv" type="text"/></td>
+              </tr>
+            </tbody>
+          </table>
+        )
+        tablesArr.push(pixel)
+      }
     }
     return (
-      <div>{tablesArr}</div>
+      <div className="display">{tablesArr}</div>
     )
   }
 }

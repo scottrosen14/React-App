@@ -4,6 +4,7 @@
 
 body {
   background-color: #343A40;
+  color: black;
 }
 
 .App {
@@ -19,7 +20,7 @@ body {
   background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
+  /*color: white;*/
 }
 
 .App-title {
@@ -35,24 +36,73 @@ body {
   to { transform: rotate(360deg); }
 }
 
+button {
+  background-color: white;
+  border-color: white;
+  border-radius: 3px;
+  padding: 10px;
+  font-weight: bold;
+}
+
 .addTableBtn {
   position: relative;
   margin-left: 45%;
   padding: 10px;
   font-weight: bold;
-  color: blue;
+  color: #00C4C1;
+  float: left;
 }
 
 .table {
   position: relative;
+  margin-top: 0px;
   border: 10px solid #00BEBE;
+  border-radius: 15px;
+  float: left;
+}
+
+.tableInvisible {
+  position: relative;
+  border: 10px solid rgba(0,0,0,0);
   border-radius: 5px;
   margin: 100px;
   float: left;
 }
 
+.inputInv {
+  background-color: rgba(0,0,0,0);
+  border-color: rgba(0,0,0,0);
+}
+
+input {
+  padding: 10px;
+}
+
+.tableWrapper {
+  position: relative;
+  border: 1px solid red;
+  border-radius: 15px;
+  width: 400px;
+  margin: 20px;
+}
+
+.tableWrapper h1 {
+  color: red;
+}
+
 .topRow {
-  background-color: red;
+  background-color: #00BEBE;
+}
+
+.topRow input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 3px;
+}
+
+.addRowBtn {
+  margin: auto;
+  width: 100%;
 }
 
 #tableBarWrap {
@@ -68,4 +118,10 @@ body {
   border-radius: 4px; /* Rounded borders */
   margin: auto;
   resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+.display {
+  border: 1px solid red;
+  height: 800px;
+  width: 100%;
 }

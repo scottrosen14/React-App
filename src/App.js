@@ -30,6 +30,14 @@ class App extends Component {
     this.setState(stateNew);
   }
 
+  deleteAllTables = () => {
+    // pass func down as props
+    // create delete all button
+    let stateNew = Object.assign({}, this.state);
+    stateNew.tables = [];
+    this.setState(stateNew);
+  }
+
   deleteTable = (index) => {
     // add button to table for deleting
     // copy state
@@ -37,47 +45,44 @@ class App extends Component {
     // make the target table an empty object
     // check to make sure state has changed
     const stateNew = Object.assign({}, this.state);
-    stateNew.tables.splice(index, 1);
+    // stateNew.tables.splice(index, 1);
+    stateNew.tables[index] = null;
     this.setState(stateNew);
+    // console.log('blah state', this.state)
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  addRow = (tableIndex) => {
+    let stateNew = Object.assign({}, this.state);
+    let table = stateNew.tables[tableIndex];
+    if (table) {
+      stateNew.tables[tableIndex].rows.push({ field: '', type: '' })
+    }
+    this.setState(stateNew);
+    // console.log('state1', this.state)
   }
-  changeTableName = (e) => {
-    this.setState(() => {
-      let newState = this.state;
 
-      console.log('placeholder', e.target)
-        // newState.tables[0].name = e.target.placeholder;
-      return newState;
+  changeTableName = (e, tableIndex)=> {
+    let stateNew = Object.assign({}, this.state);
+    stateNew.tables.forEach((tbl, i) => {
+      tbl.name = e.target.value;
     })
-  }
-  addRow = () => {
-    this.setState(() => {
-      let newState = this.state;
-      newState.tables.forEach((table, i) => {
-        table.rows.push({ field: '', type: '' })
-      })
-      return newState;
-    })
+    // stateNew.tables[tableIndex].name = e.target.value;
+    this.setState(stateNew);
+    // console.log('name', this.state.tables[0]);
   }
 
   render() {
     return (
       <div>
         <div id="tableBarWrap">
-        <form onSubmit={this.handleSubmit}>
             <input
               id="tableBar"
               type="text"
-              onChange={this.changeTableName}
-              placeholder={this.state.tables.length > 0 ? this.state.tables[0].name : 'Table'}/>
+              placeholder="Type here..."/>
             <button className="addTableBtn" onClick={this.addTable}>Add Table</button>
-            <input type="submit" value="Submit" className="addTableBtn" onClick={this.changeTableName}/>
-        </form>
+            <button className="Delete All" onClick={this.deleteAllTables}>Delete All</button>
         </div>
-        <Display state = {this.state} deleteTable={this.deleteTable} addRow={(e) => this.addRow(e)}/>
+        <Display state = {this.state} deleteTable={this.deleteTable} deleteAllTables={this.deleteAllTables} addRow={this.addRow} changeTableName={this.changeTableName} />
       </div>
     );
   }
