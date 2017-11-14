@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Draggable, {DraggableCore} from 'react-draggable';
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import TextField from 'material-ui/TextField';
 
 class Table extends Component {
   constructor(props) {
@@ -30,7 +33,6 @@ class Table extends Component {
   }
 
   render() {
-
     const {state, name, table, tableIndex, deleteTable, addRow, changeTableName} = this.props;
     // console.log('new state', this.state)
     let rows;
@@ -38,7 +40,10 @@ class Table extends Component {
       rows = table.rows.map((row, i) => {
         return (
           <tr className="dataField">
-            <td><input type="text" placeholder="field" /></td>
+            <td><TextField
+                floatingLabelText="data type"
+              />
+            </td>
             <td><input type="text" placeholder="data type" /></td>
           </tr>
         );
@@ -48,19 +53,21 @@ class Table extends Component {
     return (
       <Draggable>
       <div className="tableWrapper">
-        <table style={{"margin-left": this.state.x}} className="table" onChange={() => changeTableName()} ref={(e) => {this.coordinates = e}}>
-          <button onClick={() => deleteTable(tableIndex)}>Delete</button>
-          <thead>
+        <table style={{"margin-left": this.state.x}} className="table" onChange={changeTableName} ref={(e) => {this.coordinates = e}}>
+          <span className="deleteTableBtn" onClick={() => deleteTable(tableIndex)}>X</span>
             <tr className="topRow">
               <th colSpan={2}>
                 <input type="text" placeholder="Table Name..."/>
               </th>
             </tr>
-          </thead>
           <tbody>
             {rows}
-            <tr colSpan={2}>
-            <button className="addRowBtn" onClick={() => this.props.addRow(tableIndex)}>Add Row</button>
+            <tr className="buttonRow" colSpan={2}>
+              <div>
+              <FloatingActionButton mini="true" className="addRowBtn" onClick={() => this.props.addRow(tableIndex)}>
+                <ContentAdd/>
+              </FloatingActionButton>
+              </div>
             </tr>
           </tbody>
         </table>

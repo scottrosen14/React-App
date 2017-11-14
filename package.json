@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "material-ui": "^0.19.4",
     "raphael": "^2.2.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-draggable": "^3.0.3",
+    "react-full-screen": "0.0.2",
     "react-raphael": "^0.9.0",
+    "react-screenfull": "^0.1.2",
     "react-scripts": "1.0.15",
     "react-simple-flowchart": "^1.2.2"
   },

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Table from './Table';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 class Display extends Component {

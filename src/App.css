@@ -37,8 +37,8 @@ body {
 }
 
 button {
-  background-color: white;
-  border-color: white;
+  background-color: #A0AAAD;
+  border-color: #A0AAAD;
   border-radius: 3px;
   padding: 10px;
   font-weight: bold;
@@ -47,10 +47,33 @@ button {
 .addTableBtn {
   position: relative;
   margin-left: 45%;
-  padding: 10px;
+  /*padding: 10px;*/
   font-weight: bold;
-  color: #00C4C1;
+  color: white;
   float: left;
+  border: 3px solid #00BEBE;
+  border-radius: 5px;
+}
+
+.deleteTableBtn {
+  margin-top: -11px;
+  margin-left: 98%;
+  background-color: rgba(250,250,250,.5);
+  float: right;
+  position: absolute;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 40%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.deleteTableBtn:hover {
+  background-color: red;
+  color: white;
+  cursor: pointer;
 }
 
 .table {
@@ -58,7 +81,14 @@ button {
   margin-top: 0px;
   border: 10px solid #00BEBE;
   border-radius: 15px;
+  border-collapse: separate;
   float: left;
+  /*border-spacing: 0px;*/
+}
+.table tr td {
+  border: 3px solid #A0AAAD;
+  border-radius: 2px;
+  padding: 10px;
 }
 
 .tableInvisible {
@@ -100,8 +130,22 @@ input {
   margin-bottom: 3px;
 }
 
+.buttonRow {
+  border: 2px solid orange;
+}
+
 .addRowBtn {
-  margin: auto;
+  position: relative;
+  float: left;
+  margin-left: 90%;
+}
+
+.dataField {
+  border: none;
+  font-size: 0;
+}
+
+.dataField input {
   width: 100%;
 }
 
@@ -110,14 +154,16 @@ input {
   position: relative;
   margin: auto;
 }
-#tableBar {
-  position: relative;
-  width: 100%; /* Full width */
-  padding: 12px; /* Some padding */
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  margin: auto;
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+
+/*.appBar {
+  width: 100px;
+  height: 30px;
+  line-height: 1;
+  background-color: rgba((0,192,215,.4));
+}*/
+
+.appBar h1 {
+  line-height: 30px;
 }
 
 .display {
